@@ -1,5 +1,5 @@
 
-echo on
+@echo off
 
 set version=""
 FOR /F "tokens=* delims=" %%x in (version.txt) DO set version=%%x

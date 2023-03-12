@@ -6,6 +6,9 @@
 # It also asks the user which save file to package into a second .zip file.
 # Optional: Users can add a workspace file if the error is specific to a certain vehicle they created.
 
+# Copyright (C) 2023  Linuxgurugamer & ShadowZone
+
+ 
 # Specify the path to the INI file
 $iniPath = ".\KSP2_BugPackager.ini"
 
@@ -60,9 +63,10 @@ $config = Get-IniContent $iniPath
 $debug = $config["KSP2_BugPackager"]["debug"]
 $allInOneFile= $config["KSP2_BugPackager"]["allInOneFile"]
 $zipFilePath = $config["KSP2_BugPackager"]["zipFilePath"]
-$userName = $config["KSP2_BugPackager"]["userName"]
 $pathToGameDirectory = $config["KSP2_BugPackager"]["pathToGameDirectory"]
-$pathToCampaignDirectories = $config["KSP2_BugPackager"]["pathToCampaignDirectories"]
+
+$pathToCampaignDirectories="$env:APPDATA\..\LocalLow\Intercept Games\Kerbal Space Program 2\Saves\SinglePlayer"
+
 
 
 if ($debug -gt "0") {
@@ -70,9 +74,7 @@ if ($debug -gt "0") {
     Write-Host "debug: $debug"
     Write-Host "allInOneFile: $allInOneFile"
     Write-Host "zipFilePath: $zipFilePath"
-    Write-Host "userName: $userName"
     Write-Host "pathToGameDirectory: $pathToGameDirectory"
-    Write-Host "pathToCampaignDirectories: $pathToCampaignDirectories"
 }
 if ($debug -gt "1") {
     Set-PSDebug -Trace 2
@@ -133,7 +135,7 @@ Set-Content -Path $bugDescrFilePath -Value $multilineText
 
 
 # Set the paths to the files you want to collect
-$file1Path = "C:\Users\$userName\AppData\LocalLow\Intercept Games\Kerbal Space Program 2\Player.log"
+$file1Path="$env:APPDATA\..\LocalLow\Intercept Games\Kerbal Space Program 2\Player.log"
 $file2Path = "$pathToGameDirectory\Ksp2.log"
 
 # Create the .zip file containing the logs
@@ -259,28 +261,23 @@ if ($includeWorkspace -eq "y") {
 		[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,$workspaceJpg, "Workspaces\$workspaceJpgName",$compression)
 		$zip.Dispose()
     } else {
-	    Write-Host "----------------------------------------------------------------------------------------"
-		Write-Host "Save file $savefilePath packaged into $zipSaveFiles.zip with workspace $workspaceFilePath."
-		Write-Host ""
-		Write-Host "----------------------------------------------------------------------------------------"
-   		Write-Host "END."
-	    Write-Host "----------------------------------------------------------------------------------------"
+     # No workspace specified, just package save file data.
+       Compress-Archive -Path $saveArray -Update  -DestinationPath $zipSavePath
 	}
 } else {
     # If user does not want to include workspace, just package save file data.
 	Compress-Archive -Path $saveArray -Update  -DestinationPath $zipSavePath
-    Write-Host "Save file $savefilePath packaged into $zipSaveFiles.zip without workspaces."
-	Write-Host ""
-	Write-Host "----------------------------------------------------------------------------------------"
-	Write-Host "END."
-	Write-Host "----------------------------------------------------------------------------------------"
 }
 
 
 Write-Host ""
+Write-Host "----------------------------------------------------------------------------------------"
+Write-Host "----------------------------------------------------------------------------------------"
+Write-Host ""
 Write-Host "Bug report zip files are completed, stored in: $zipFilePath"
 
 if ($allInOneFile -eq "true") {
+    Write-Host ""
     Write-Host "All files are in the zip file:  $zipLogPath"
 } else {
     Write-Host "Files are stored in the following two zip files:"

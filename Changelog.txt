@@ -2,3 +2,8 @@ Changelog
 
 0.1
     Initial commit
+    
+0.2
+    Removed need to enter userName and pathToCampaignDirectories, now getting from Windows directly
+    Removed some old messages
+    

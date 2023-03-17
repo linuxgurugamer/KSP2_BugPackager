@@ -9,7 +9,6 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
 x64/
 build/
 bld/
@@ -233,3 +232,4 @@ $RECYCLE.BIN/
 *.dll
 *.pdb
 .vs
+*.zip

@@ -55,6 +55,93 @@ function Test-NumericRange {
     return $false
 }
 
+##########################################
+
+function GetOptionalFiles {
+
+    Add-Type -AssemblyName System.Windows.Forms
+
+    # Create a new form object
+    $form = New-Object System.Windows.Forms.Form
+
+    # Set the form properties
+    $form.Text = "Drag and Drop Window"
+    $form.FormBorderStyle = "FixedDialog"
+    $form.MaximizeBox = $false
+    $form.StartPosition = "CenterScreen"
+
+    # Set the form size
+    $form.Width = 405
+    $form.Height = 435
+
+    # Allow files to be dropped onto the form
+    $form.AllowDrop = $true
+
+    # Add a label to the form
+    $label = New-Object System.Windows.Forms.Label
+    $label.Location = New-Object System.Drawing.Point(10, 10)
+    $label.Text = "Drag and drop files onto this window."
+    $form.Controls.Add($label)
+
+    # Add a list box to the form to display dropped files
+    $listBox = New-Object System.Windows.Forms.ListBox
+    $listBox.Location = New-Object System.Drawing.Point(10, 40)
+    $listBox.Size = New-Object System.Drawing.Size(380, 300)
+    $form.Controls.Add($listBox)
+
+    # Add a close button to the form
+    $button = New-Object System.Windows.Forms.Button
+    $button.Location = New-Object System.Drawing.Point(150, 360)
+    $button.Size = New-Object System.Drawing.Size(100, 30)
+    $button.Text = "Close & Finish"
+    $form.AcceptButton = $button
+    $form.Controls.Add($button)
+
+    # Add an event handler for the drag and drop event
+    $form.add_DragEnter({
+        # Check if any files are being dragged onto the form
+        if ($_.Data.GetDataPresent([System.Windows.Forms.DataFormats]::FileDrop)) {
+            $_.Effect = [System.Windows.Forms.DragDropEffects]::Copy
+        }
+    })
+
+    $form.add_DragDrop({
+        # Get the list of dropped files and display them in the list box
+        $files = $_.Data.GetData([System.Windows.Forms.DataFormats]::FileDrop)
+        foreach ($file in $files) {
+            $listBox.Items.Add($file)
+        }
+    })
+
+    # Add an event handler for the close button
+    $button.add_Click({
+        # Output the list of dropped files to the console
+        New-Object -TypeName System.Collections.ArrayList
+        ## Close the form
+        $form.DialogResult = [System.Windows.Forms.DialogResult]::OK
+        $form.Close()
+    })
+
+    # Show the form
+    $result = $form.ShowDialog()
+    if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
+        $form.Dispose()
+
+                $files = @()
+        foreach ($file in $listBox.Items) {
+            #Write-Host $file
+            $files += $file
+        }
+        # Close the form
+        $form.DialogResult = [System.Windows.Forms.DialogResult]::OK
+        $form.Close()
+        return $files
+
+    }
+
+
+}
+
 
 # Call the function to parse the INI file
 $config = Get-IniContent $iniPath
@@ -267,6 +354,23 @@ if ($includeWorkspace -eq "y") {
 } else {
     # If user does not want to include workspace, just package save file data.
 	Compress-Archive -Path $saveArray -Update  -DestinationPath $zipSavePath
+}
+
+$f = GetOptionalFiles 
+if ($f.Count -gt 0) {
+    Write-Host "Adding files to zip file"
+	$zip = [System.IO.Compression.ZipFile]::Open($zipSavePath, 'Update')
+	
+	# Create subfolder "Files" inside .zip file
+	$zip.CreateEntry("Files/")
+	$compression = [System.IO.Compression.CompressionLevel]::Fastest
+    foreach ($f1 in $f) {
+
+		$name = (Get-Item $PSCommandPath ).Name 
+		[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $f, "Files\$name",$compression)
+    }
+    $zip.Dispose()
+
 }
 
 

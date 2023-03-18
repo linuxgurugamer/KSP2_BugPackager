@@ -7,3 +7,5 @@ Changelog
     Removed need to enter userName and pathToCampaignDirectories, now getting from Windows directly
     Removed some old messages
     
+0.3
+	Added GUI dialog to allow misc files to be added

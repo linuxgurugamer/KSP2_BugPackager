@@ -8,4 +8,7 @@ Changelog
     Removed some old messages
     
 0.3
-	Added GUI dialog to allow misc files to be added
+    Made app fully GUI based
+    Added ability to include misc files to be added
+    Removed option for allInOneFile
+    Added credits header line to bug description

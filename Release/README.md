@@ -22,14 +22,9 @@ the following documentation of the variables:
 
 debug                       Controls debugging level. 0 means no debugging, 1 displays
                             the values read from the INI file, 2 turns on PowerShell tracing
-                            
-allInOneFile                If true, all files will be packaged up into a single file.  Otherwise
-                            there will be one file for the logs and a second file for the save files
-                            
+                                                        
 zipFilePath                 This contains the full path to where you want the script to saved   
                             the zip file
-
-userName                    Replace with your Windows user name
 
 pathToGameDirectory         Replace with the path to the directory where KSP 2 is.  The followin
                             two lines are examples of two different locations where KSP 2 lives on 
@@ -38,35 +33,32 @@ pathToGameDirectory         Replace with the path to the directory where KSP 2 i
     pathToGameDirectory=C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program 2
     pathToGameDirectory=U:\SteamLibrary\steamapps\common\Kerbal Space Program 2
 
-pathToCampaignDirectories   This is the path to the SinglePlayer directory where the games are saved.
-                            The following line is an example of where my files are:
 
-    pathToCampaignDirectories=C:\Users\Linuxgurugame\AppData\LocalLow\Intercept Games\Kerbal Space Program 2\Saves\SinglePlayer
 
 =====
 Usage
 =====
 Once the INI file is configured, you can start the script by double-clicking on 
-the KSP2_PowerShell.bat file.  The following prompts are displayed:
+the KSP2_PowerShell.bat file.  A window will open up with entry fields for the following:
 
-Enter Bug title:        Enter the title of the bug.  Keep this short, it is used as the name
-                        of the zip file.  Also, if there is an existing zip file by that name
-                        you will be prompted to enter a different one.  It is also advisable 
-                        not use spaces
 
-Please enter the bug description.  Enter a blank line when you're finished:
+Enter Bug title:        
+Please enter the bug description:
 
-A list of all the campaigns in the SinglePlayer directory is then displayed.  Select
-the campaign which you are reporting the bug occurred in.
+There will also be a second window where you can drag and drop files which you want to include with the report
 
-Then a list of the save files for that campaign are displayed.  Again, select the one
-which contains the bug.
 
-Do you want to include a workspace? (y/N):  Yes or no, pressing return (or anything other than
-                                            a "y") will bypass the workspaces
-                                            
-If you did reply with a "y", you will then be presented with a list of workspaces
-Select the workspace to include.
+Fill out the title and description.  Keep the title short, with no special characters, this will be used for the name of the zip file
 
-The files will then be packaged up, and the names of the file(s) which contain the
-bug report will be displayed.  When done, press <ENTER> to end the script and close the window
+After filling out the title and description, new listbox will be added with all the campaigns available.  Select the campaign which illustrates the bug, then click the "Select Campaign" button
+
+After selecting the campaign, a list of all the saves in that campaign will be displayed.  Select a save and click the "Select Save" button
+
+At this point, if you want to include  a workspace, click the checkbox and select a workspace following the same procedure
+
+
+
+When you are done entering information click the button labeled "Finalize Bug Report".  The data will be packaged up into a zip file, and the folder where it is will be opened.  
+
+The final step is to upload the report.  The have specified two different places to upload bug reports, there are two buttons at the lower-right of the window, one for each.  Click the button you want to use, the script will open up the appropriate page. 
+

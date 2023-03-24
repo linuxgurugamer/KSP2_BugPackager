@@ -12,3 +12,7 @@ Changelog
     Added ability to include misc files to be added
     Removed option for allInOneFile
     Added credits header line to bug description
+
+0.3.1
+	Fixed error when adding multiple optional files 
+	Added button to clear entered files

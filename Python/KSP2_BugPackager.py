@@ -43,7 +43,9 @@ print_debug("pathToCampaignDirectories: {}".format(pathToCampaignDirectories))
 # Setup root window
 root = Tk()
 root.title("KSP2 Debug Reporter")
-root.call("wm", "iconphoto", root._w, PhotoImage(file="no-kraken-icon-64.png"))  # this worked, although the image quality could be better
+icon_file = "no-kraken-icon-64.png"
+if os.path.isfile(icon_file):
+    root.call("wm", "iconphoto", root._w, PhotoImage(file=icon_file))  # this worked, although the image quality could be better
 # icon = PhotoImage(file="no-kraken-icon.png")
 # root.iconphoto(False, icon)
 

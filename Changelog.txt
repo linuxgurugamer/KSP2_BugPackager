@@ -21,3 +21,6 @@ Changelog
     Updated prompts for drag/drop
     Swapped location of the bug reports buttons
     Added an additional line re. forum files
+    
+0.3.3
+    Fixed the buttons for the reporting pages to only show after the finalize button is clicked

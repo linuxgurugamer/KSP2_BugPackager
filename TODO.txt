@@ -1,0 +1,44 @@
+Title: (a sentence that summarizes the issue)
+
+Specs: (see further below for how to give us all the info we need here)
+
+Severity: (high/med/low).   This is your opinion – but it typically goes (High = crash, Med = feature not working as expected, Low = there is an issue, but has a work around)
+
+Frequency: (high/med/low).  Does this happen a lot?  Can you reproduce it consistently?  Or was it a one off? (still want to know about it, but we’ll categorize it as such)
+
+Description:  Tell us what you were doing, what you expected to happen and what actually happened, etc.   More information here the better, but we want specifics not generalizations.  Screenshots are good, videos are good, save files, etc. HOW you were making something is very important here. Giving us a fully built rocket for us to load and try…. might not have the same results has giving us the steps of how you built that rocket. How you created it and the order you made it in is often far more important than the end result.
+
+
+
+dxdiag /whql:off /t  output.txt
+systeminfo /fo list 
+strip out:
+	host name
+	registered owner
+	domain
+	logon server
+
+
+# Create a new form
+$form = New-Object System.Windows.Forms.Form
+
+# Create a dropdown list
+$dropdown = New-Object System.Windows.Forms.ComboBox
+$dropdown.Items.Add("Option 1")
+$dropdown.Items.Add("Option 2")
+$dropdown.Items.Add("Option 3")
+$dropdown.SelectedIndex = 0
+$dropdown.Location = New-Object System.Drawing.Point(10, 10)
+$dropdown.Width = 150
+
+# Add the dropdown to the form
+$form.Controls.Add($dropdown)
+
+# Show the form
+$result = $form.ShowDialog()
+
+# Get the selected value from the dropdown
+if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
+    $selectedValue = $dropdown.SelectedItem
+    Write-Host "Selected value: $selectedValue"
+}

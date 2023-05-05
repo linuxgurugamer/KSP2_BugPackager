@@ -24,3 +24,12 @@ Changelog
     
 0.3.3
     Fixed the buttons for the reporting pages to only show after the finalize button is clicked
+    
+0.4
+    Added more information gathering:
+        DX Diagnostic information
+        System information
+	Added Severity and Frequency
+	Added prompts to indicate info gathering in progress
+        
+        

@@ -14,24 +14,30 @@ in a file.  All settings are configurable in the INI file.
 The result will be in two zip files, one containing the logs and the second containing the save 
 file(s)
 
+============
+Installation
+============
+
+Unpack the zip file into a folder
+Double-click on the install.bat file
+
+
+=============================================
+Technical Information
+=============================================
+
+While you should never need to change it, the following is provided for those people who would 
+want to manually customize the config
+
 ======================
 INI file Documentation
 ======================
-Copy the file KSP2_BugPackager.ini-example to KSP2_BugPackager.ini and then edit it using
-the following documentation of the variables:
-
-debug                       Controls debugging level. 0 means no debugging, 1 displays
-                            the values read from the INI file, 2 turns on PowerShell tracing
                                                         
 zipFilePath                 This contains the full path to where you want the script to saved   
                             the zip file
 
-pathToGameDirectory         Replace with the path to the directory where KSP 2 is.  The followin
-                            two lines are examples of two different locations where KSP 2 lives on 
-                            my system:
+pathToGameDirectory         Replace with the path to the directory where KSP 2 is.
 
-    pathToGameDirectory=C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program 2
-    pathToGameDirectory=U:\SteamLibrary\steamapps\common\Kerbal Space Program 2
 
 
 

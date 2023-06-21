@@ -31,5 +31,13 @@ Changelog
         System information
 	Added Severity and Frequency
 	Added prompts to indicate info gathering in progress
-        
-        
+0.5
+    Removed all reference to the allInOne option, not used anymore
+    Created installer
+    Updated URL for bug reporting
+    Put the installed files within their own folder within the KSP2 Installation folder
+    Added shortcut to desktop
+    GUI stuff
+        Added window to display system specs, to make it easier to copy/paste to bugpage
+        Added button to open the reports folder
+

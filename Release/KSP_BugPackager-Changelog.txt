@@ -33,6 +33,9 @@ Changelog
 	Added prompts to indicate info gathering in progress
 0.5
     Removed all reference to the allInOne option, not used anymore
+
+    Thanks to forum user @anth12 for suggesting a lot of the following:
+
     Created installer
     Updated URL for bug reporting
     Put the installed files within their own folder within the KSP2 Installation folder
@@ -40,4 +43,7 @@ Changelog
     GUI stuff
         Added window to display system specs, to make it easier to copy/paste to bugpage
         Added button to open the reports folder
+
+    Added selection of first item in list box
+    Added buttons to copy the OS, CPU, RAM and GPU info to the clipboard
 

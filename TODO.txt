@@ -2,11 +2,23 @@ Added version number to windows
 Add version number to report description
 
 
-Update URLs to the following:   https://forum.kerbalspaceprogram.com/forms/2-ksp2br/
+DONE	Update URLs to the following:   https://forum.kerbalspaceprogram.com/forms/2-ksp2br/
 
 Further Suggestions:
 
-Put the installed files within their own folder within the KSP2 Installation folder.  (Like CKAN does)
-Take away the player/reporters choice of where to put the bug packages. Just put them within a folder within the KSP2 Installation folder.
-And perhaps a shortcut on the desktop for future use so they don't have to search for the KSP2 installation folder again or install from the download file again.
-Then I have a few suggestions for the GUI which will help with the form if you are open to it. The players will still be potentially lost on a few more things that can be countered quite easily.
+DONE	Put the installed files within their own folder within the KSP2 Installation folder.  (Like CKAN does)
+
+DONE	Take away the player/reporters choice of where to put the bug packages. Just put them within a folder within the KSP2 Installation folder.
+
+DONE	And perhaps a shortcut on the desktop for future use so they don't have to search for the KSP2 installation folder again or install from the download file again.
+
+
+GUI: 
+DONE	Take the Computer specs from Ksp2.log:
+	And put onto the GUI for easier transfer to the form. Input boxes with them highlighted? 
+
+Or autocopy with clicking in each box? Not sure the easiest way to implement it.
+
+
+
+DONE	GUI: Add Button to open existing bug packages folder.

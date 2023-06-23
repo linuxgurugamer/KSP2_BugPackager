@@ -52,3 +52,5 @@ Changelog
 	Fixed installer to not create extra folder if it already exists
 	Reordered the buttons to copy the CPU, GPU, RAM and OS info to match the same order as on the web page
 
+0.6.0
+	Now clicking the URL button will autopopulate the fields in the web page

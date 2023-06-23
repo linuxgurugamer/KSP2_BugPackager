@@ -47,3 +47,8 @@ Changelog
     Added selection of first item in list box
     Added buttons to copy the OS, CPU, RAM and GPU info to the clipboard
 
+0.5.1
+	Removed the System Info text box
+	Fixed installer to not create extra folder if it already exists
+	Reordered the buttons to copy the CPU, GPU, RAM and OS info to match the same order as on the web page
+

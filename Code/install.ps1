@@ -150,7 +150,9 @@ if ($customReportLoc -eq "Y" -or $customReportLoc -eq "y") {
 	}
 } else
 {
+	if (-not (Test-Path -Path $defaultReportLocation -PathType Container)) {
 	CreateReportDir -SelectedPath $defaultReportLocation
+	}
     $directoryPath = $defaultReportLocation
 }
 Write-Host "Selected report folder: $directoryPath"

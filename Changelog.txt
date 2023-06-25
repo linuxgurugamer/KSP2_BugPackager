@@ -54,3 +54,6 @@ Changelog
 
 0.6.0
 	Now clicking the URL button will autopopulate the fields in the web page
+
+0.7.0
+	Added autofilling the title.  Unable to do the textbox so far
